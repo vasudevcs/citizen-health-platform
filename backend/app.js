@@ -29,13 +29,13 @@ const app = express();
 connectDB();
 
 const corsOptions = {
-  // In dev allow any origin (covers localhost, ngrok, mobile via tunnel, etc.)
-  // In production lock this down to the real domain.
-  origin: process.env.NODE_ENV === 'production'
-    ? (process.env.FRONTEND_URL || 'http://localhost:5173')
-    : true,
-  credentials: true, // required so browser sends/receives httpOnly refresh cookie
-  allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning'],
+  origin: process.env.FRONTEND_URL || true,
+  credentials: true,
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    'ngrok-skip-browser-warning',
+  ],
 };
 
 app.use(helmet());
