@@ -19,15 +19,16 @@ function generateRefreshToken() {
 }
 
 function refreshCookieOptions() {
+  const isProduction = process.env.NODE_ENV === 'production';
+
   return {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'lax',
     maxAge: REFRESH_TOKEN_TTL_MS,
-    path: '/api/auth', // only sent to auth routes
+    path: '/api/auth',
   };
 }
-
 module.exports = {
   generateAccessToken,
   generateRefreshToken,

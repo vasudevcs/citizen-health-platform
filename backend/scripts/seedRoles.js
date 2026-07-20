@@ -10,11 +10,41 @@ const User = require('../models/User');
 const PASSWORD = 'Password123!';
 
 const USERS = [
-  { name: 'Test Citizen', email: 'citizen@test.com', phone: '+10000000001', role: 'citizen' },
-  { name: 'Dr. Test Doctor', email: 'doctor@test.com', phone: '+10000000002', role: 'doctor' },
-  { name: 'Test Ambassador', email: 'ambassador@test.com', phone: '+10000000003', role: 'ambassador' },
-  { name: 'Test Researcher', email: 'researcher@test.com', phone: '+10000000004', role: 'researcher' },
-  { name: 'Test Admin', email: 'admin@test.com', phone: '+10000000005', role: 'admin' },
+  {
+    name: 'Test Citizen',
+    username: 'citizen',
+    email: 'citizen@test.com',
+    phone: '+10000000001',
+    role: 'citizen'
+  },
+  {
+    name: 'Dr. Test Doctor',
+    username: 'doctor',
+    email: 'doctor@test.com',
+    phone: '+10000000002',
+    role: 'doctor'
+  },
+  {
+    name: 'Test Ambassador',
+    username: 'ambassador',
+    email: 'ambassador@test.com',
+    phone: '+10000000003',
+    role: 'ambassador'
+  },
+  {
+    name: 'Test Researcher',
+    username: 'researcher',
+    email: 'researcher@test.com',
+    phone: '+10000000004',
+    role: 'researcher'
+  },
+  {
+    name: 'Test Admin',
+    username: 'admin',
+    email: 'admin@test.com',
+    phone: '+10000000005',
+    role: 'admin'
+  },
 ];
 
 async function seed() {
@@ -41,6 +71,7 @@ async function seed() {
 
     const user = new User({
       name: u.name,
+      username: u.username,
       email: u.email,
       phone: u.phone,
       passwordHash: PASSWORD, // hashed by the pre-save hook
